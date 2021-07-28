@@ -66,6 +66,11 @@ def create_rating(user, movie, score):
 
     return rating
 
+def get_favorites_by_user(user_id):
+    """Returns all favorites of a user."""
+
+    return Favorite.query.filter(Favorite.user_id == user_id).all()
+
 
 if __name__ == '__main__':
     from server import app

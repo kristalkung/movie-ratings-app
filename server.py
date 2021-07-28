@@ -48,12 +48,13 @@ def register_users():
 
     if crud.get_user_by_email(email) == email:
         flash('You can’t create an account with that email. Try again')
+        return redirect('/signup')
 
     else:
         crud.create_user(email, password)
         flash('Your account has been created. Please log in.')
+        return redirect('/login')
 
-    return redirect('/')
 
 @app.route('/users')
 def all_users():
@@ -86,7 +87,7 @@ def user_login():
         return redirect('/')
     else:
         flash('incorrect login')
-        return redirect('/')
+        return redirect('/login')
 
 
 
